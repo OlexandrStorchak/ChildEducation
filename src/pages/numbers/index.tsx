@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import NumberItem from '../../components/numbers/NumberItem';
 import { numbers } from '../../constants';
-import styles from './Numbers.module.css';
 
 const Numbers = () => {
   return (
@@ -16,7 +15,7 @@ const Numbers = () => {
                 item
                 lg={3}
                 xs={3}
-                className={styles.numberCard}
+                className='numbers-cards'
                 justifyContent='center'
               >
                 <NumberItem number={number} />

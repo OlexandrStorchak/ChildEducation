@@ -1,13 +1,12 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import NavLink from './NavLink';
-import styles from './Navigation.module.css';
 import { NUMBERS_PAGE, ROOT_PATH } from '../../constants';
 
 const Navigation = () => {
   return (
     <>
-      <Box className={styles.box}>
+      <Box className='navigation-box'>
         <Grid container spacing={2}>
           <Grid item xs={2} sm={2} lg={1}>
           </Grid>

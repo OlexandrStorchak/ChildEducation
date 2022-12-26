@@ -6,3 +6,29 @@
 body {
   background-color: rgb(79, 48, 95);
 }
+
+.navigation-box {
+  background-color: rgb(52, 52, 52);
+  padding: 15px;
+}
+
+.index-box-title {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.numbers-cards {
+  display: flex;
+  margin: 2rem;
+}
+
+.number-card {
+  background-color: rgb(135, 59, 160);
+  text-align: center;
+}
+
+.number-card-content {
+  display: block;
+  width: 150px;
+  height: 150px;
+}
