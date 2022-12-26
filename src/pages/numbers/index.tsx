@@ -15,8 +15,8 @@ const Numbers = () => {
                 item
                 lg={3}
                 xs={3}
-                className='numbers-cards'
                 justifyContent='center'
+                sx={{ display: 'flex', margin: '2rem' }}
               >
                 <NumberItem number={number} />
               </Grid>

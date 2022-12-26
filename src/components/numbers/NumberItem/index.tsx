@@ -14,9 +14,12 @@ const NumberItem = ({ number }: INumberItem) => {
   };
 
   return (
-    <Card className='number-card' onClick={handleOnclick}>
+    <Card
+      onClick={handleOnclick}
+      sx={{ backgroundColor: 'rgb(135, 59, 160)', textAlign: 'center' }}
+    >
       <CardActionArea>
-        <CardContent className='number-card-content'>
+        <CardContent sx={{ display: 'block', width: '150px', height: '150px' }}>
           <Typography variant='h1' color='whitesmoke'>
             {number}
           </Typography>
