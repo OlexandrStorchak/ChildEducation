@@ -40,6 +40,10 @@ body {
   margin: 5px;
 }
 
+.number-card:last-child:nth-child(3n - 2) {
+  grid-column-end: 3;
+}
+
 .number-card-content {
   text-align: center;
 }
