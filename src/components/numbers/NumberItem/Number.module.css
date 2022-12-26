@@ -1,0 +1,10 @@
+.numberCard {
+  background-color: rgb(135, 59, 160);
+  text-align: center;
+}
+
+.numberCardContent {
+  display: block;
+  width: 150px;
+  height: 150px;
+}
