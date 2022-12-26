@@ -1,29 +1,20 @@
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import NumberItem from '../../components/numbers/NumberItem';
 import { numbers } from '../../constants';
 
 const Numbers = () => {
   return (
     <>
-      <Box>
-        <Grid container justifyContent='center'>
+      <div className='numbers-container'>
+        <div className='numbers-cards'>
           {numbers.map((number) => {
             return (
-              <Grid
-                key={number}
-                item
-                lg={3}
-                xs={3}
-                justifyContent='center'
-                sx={{ display: 'flex', margin: '2rem' }}
-              >
+              <div key={number} className='number-card'>
                 <NumberItem number={number} />
-              </Grid>
+              </div>
             );
           })}
-        </Grid>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };
