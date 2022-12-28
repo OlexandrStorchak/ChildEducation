@@ -62,6 +62,11 @@ body {
 .number-card {
   background-color: rgb(135, 59, 160);
   margin: 5px;
+  border-radius: 4px;
+}
+
+.number-card:hover {
+  box-shadow: 0 2px 10px rgba(255, 83, 172, 0.989);
 }
 
 .number-card:last-child:nth-child(3n - 2) {
@@ -74,6 +79,7 @@ body {
 
 .number-card-content:hover {
   background-color: rgb(162, 67, 193);
+  border-radius: 4px;
   box-shadow: 0 0 0 2px rgb(240, 44, 191)
 }
 
