@@ -32,7 +32,31 @@ body {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 150px 150px 150px;
-  gap: 50px;
+  gap: 30px;
+}
+
+.numbers-buttons {
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  gap: 20px;
+}
+
+.numbers-buttons button {
+  background-color: blueviolet;
+  font-size: 20px;
+  padding: 25px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(255, 188, 223, 0.5);
+  color: whitesmoke;
+}
+
+.numbers-buttons button:hover {
+  box-shadow: 0 2px 10px rgba(255, 83, 172, 0.989);
 }
 
 .number-card {
