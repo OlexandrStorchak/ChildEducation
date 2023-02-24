@@ -17,7 +17,7 @@ export const findNumberGame = (
   setPlaySelectNumberGame(true);
   const number = _.random(1, 10);
   playFindNumber();
-  setTimeout(() => playNumber(number), 2500);
+  setTimeout(() => playNumber(number), 1800);
   setNumber(number);
 };
 
