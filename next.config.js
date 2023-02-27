@@ -5,7 +5,9 @@ const { parsed: dotenv } = require('dotenv').config({
 })
 
 const nextConfig = {
-env: dotenv,
+  env: {
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
+},
   reactStrictMode: true,
   webpack: (config) => {
     config.optimization.splitChunks.cacheGroups = {
