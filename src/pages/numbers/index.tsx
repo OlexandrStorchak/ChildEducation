@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import NumberItem from '../../components/numbers/NumberItem';
 import _ from 'lodash';
 import { numbersArray } from '../../constants';
@@ -9,8 +9,10 @@ import {
   findNumberGame,
   pickNumberGameCheck,
 } from '../../utils/numbers';
+import { AuthContext } from '../../context/AuthContext';
 
 const Numbers = () => {
+  const { user } = useContext(AuthContext);
   const [numbers, setNumbers] = useState<number[]>(numbersArray);
   const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
   const [number, setNumber] = useState<number | null>(null);
@@ -51,32 +53,40 @@ const Numbers = () => {
 
   return (
     <>
-      <div className='numbers-buttons'>
-        <button onClick={startSelectNumberGame}>Знайди цифру</button>
-        <button onClick={resetHandling}>Скинути</button>
-        <button onClick={onShuffleHandling}>Перемішати</button>
-      </div>
-      <div className='numbers-container'>
-        <Zoom>
-          <div className='numbers-cards'>
-            {numbers.map((number) => {
-              return (
-                <Bounce className='number-card' key={number}>
-                  <div key={number} className='number-card'>
-                    <AttentionSeeker effect='tada' duration={2000} key={number}>
-                      <NumberItem
-                        number={number}
-                        setSelectedNumber={setSelectedNumber}
-                        playSelectNumberGame={playSelectNumberGame}
-                      />
-                    </AttentionSeeker>
-                  </div>
-                </Bounce>
-              );
-            })}
+      {user && (
+        <>
+          <div className='numbers-buttons'>
+            <button onClick={startSelectNumberGame}>Знайди цифру</button>
+            <button onClick={resetHandling}>Скинути</button>
+            <button onClick={onShuffleHandling}>Перемішати</button>
           </div>
-        </Zoom>
-      </div>
+          <div className='numbers-container'>
+            <Zoom>
+              <div className='numbers-cards'>
+                {numbers.map((number) => {
+                  return (
+                    <Bounce className='number-card' key={number}>
+                      <div key={number} className='number-card'>
+                        <AttentionSeeker
+                          effect='tada'
+                          duration={2000}
+                          key={number}
+                        >
+                          <NumberItem
+                            number={number}
+                            setSelectedNumber={setSelectedNumber}
+                            playSelectNumberGame={playSelectNumberGame}
+                          />
+                        </AttentionSeeker>
+                      </div>
+                    </Bounce>
+                  );
+                })}
+              </div>
+            </Zoom>
+          </div>
+        </>
+      )}
     </>
   );
 };

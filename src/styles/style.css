@@ -19,7 +19,47 @@ body {
 
 .index-box-title {
   text-align: center;
-  margin-top: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-user-menu {
+  display: flex;
+  border-radius: 5px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-user-menu img{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.nav-user-menu-button{
+  display: flex;
+  border-radius: 5px;
+  justify-content: flex-end;
+  align-items: center;
+  color: aliceblue;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-user-menu:hover {
+  cursor: pointer;
+}
+
+.nav-user-menu-user-name {
+  color: aliceblue;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14pt;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .numbers-container {
