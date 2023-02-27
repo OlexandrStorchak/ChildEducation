@@ -75,6 +75,10 @@ body {
   gap: 30px;
 }
 
+.numbers-cards:hover {
+  cursor: pointer;
+}
+
 .numbers-buttons {
   justify-content: center;
   margin-top: 1rem;
