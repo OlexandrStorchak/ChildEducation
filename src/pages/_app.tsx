@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
               name='viewport'
               content='width=device-width, initial-scale=1'
             />
-
+            <meta name="theme-color" content="#570057" />
             <link rel='icon' href='/favicon.ico' />
           </Head>
           <nav>
