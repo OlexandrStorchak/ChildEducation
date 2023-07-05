@@ -4,22 +4,16 @@ import Head from 'next/head';
 import { AuthProvider } from '../context/AuthContext';
 import '../styles/style.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Router from 'next/router';
 import { getMessaging, getToken, firebaseApp } from '../utils/firebase';
-import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 
 export default function App({ Component, pageProps }: AppProps) {
-
-  const [data, setData] = useState('null data')
-
   useEffect(() => {
-    console.log('useEffect in app')
     window.addEventListener('offline', offline, { passive: true })
     window.addEventListener('online', online, { passive: true })
     registerServiceWorker()
-  }, [data]);
+  }, []);
 
   const registerServiceWorker = () => {
     const messaging = getMessaging(firebaseApp)
@@ -29,19 +23,17 @@ export default function App({ Component, pageProps }: AppProps) {
         Notification.requestPermission().then(permission => {
           if (permission === 'granted') {
             getToken(messaging, { serviceWorkerRegistration: registration }).then((token) => {
-              console.log('token -', token)
               localStorage.setItem('fcm_token', token)
               localStorage.setItem('device', navigator.userAgent)
-              setData(token)
-              console.log('token - ', token)
             })
           } else {
             console.log('Unable to get permission to notify.')
+            alert('Unable to get permission to notify.')
           }
         })
 
       }).catch(error => {
-
+        console.log('Unable to register serviceworker, ', error)
       });
     }
   }
@@ -72,9 +64,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <nav>
             <Navigation />
           </nav>
-          <Button onClick={() => navigator.clipboard.writeText(data)}>
-            {data}
-          </Button>
           <Component {...pageProps} />
         </AuthProvider>
       </GoogleOAuthProvider>
