@@ -14,6 +14,8 @@ body {
   display: relative;
   margin: 0;
   padding: 0;
+  background: #570057;
+  background-color: #570057;
   background-image: linear-gradient(180deg,
       hsl(300deg 100% 17%) 0%,
       hsl(300deg 100% 13%) 50%,
