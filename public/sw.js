@@ -40,3 +40,14 @@ self.addEventListener('fetch', (event) => {
     })());
   }
 });
+
+
+self.addEventListener('push', function(event) {
+  const payload = JSON.parse(event.data.text())
+  const title = payload.notification.title
+  const options = { body: payload.notification.body }
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  )
+})
