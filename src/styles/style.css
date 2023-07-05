@@ -4,16 +4,24 @@
 }
 
 a {
-  color: inherit; 
-  text-decoration: none; 
+  color: inherit;
+  text-decoration: none;
 }
 
 body {
-  background-color: rgb(79, 48, 95);
+  width: 100%;
+  min-height: 100vh;
+  display: relative;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(180deg,
+      hsl(300deg 100% 17%) 0%,
+      hsl(300deg 100% 13%) 50%,
+      hsl(300deg 100% 8%) 100%);
 }
 
 .navigation-box {
-  background-color: rgb(52, 52, 52);
+  background-color: transparent;
   padding: 15px;
 }
 
@@ -23,6 +31,20 @@ body {
   justify-content: center;
 }
 
+.index-login-button {
+  display: flexbox;
+  margin: auto;
+  padding: auto;
+  background-color: rgb(52, 52, 52);
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 25pt;
+}
+
+.index-login-button:hover {
+  cursor: pointer;
+}
+
 .nav-user-menu {
   display: flex;
   border-radius: 5px;
@@ -30,14 +52,14 @@ body {
   align-items: center;
 }
 
-.nav-user-menu img{
+.nav-user-menu img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   margin-left: 1rem;
 }
 
-.nav-user-menu-button{
+.nav-user-menu-button {
   display: flex;
   border-radius: 5px;
   justify-content: flex-end;
@@ -130,5 +152,5 @@ body {
 .number-card-content-text {
   size: 50px;
   color: rgb(220, 220, 220);
-  font-size:80px;
+  font-size: 80px;
 }
