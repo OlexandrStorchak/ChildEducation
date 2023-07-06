@@ -17,7 +17,7 @@ const Navigation = () => {
           <Grid item xs={8} sm={8} lg={10}>
             <Box>
               <NavLink lable={'Початкова'} link={ROOT_PATH} />
-              {user && <NavLink lable={'Цифри'} link={NUMBERS_PAGE} />}
+              <NavLink lable={'Цифри'} link={NUMBERS_PAGE} />
             </Box>
           </Grid>
           <Grid item xs={2} sm={2} lg={1}>
