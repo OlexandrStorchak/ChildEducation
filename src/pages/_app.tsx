@@ -28,7 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
             })
           } else {
             console.log('Unable to get permission to notify.')
-            alert('Unable to get permission to notify.')
           }
         })
 
