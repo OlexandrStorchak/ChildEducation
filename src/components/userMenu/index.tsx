@@ -53,9 +53,9 @@ const UserMenu = () => {
                     horizontal: 'right',
                   }}
                 >
-                  <Paper className='nav-user-menu-button'>
-                    <Button onClick={handleLogout}>Вийти</Button>
-                  </Paper>
+                  <div className='nav-user-menu-wrapper'>
+                    <button className='nav-user-menu-button' onClick={handleLogout}>Вийти</button>
+                  </div>
                 </Popover>
               </>
             </>

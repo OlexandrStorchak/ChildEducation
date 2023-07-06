@@ -1,15 +1,12 @@
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 
-export default function Home({ token }: any) {
+export default function Home() {
   return (
     <Box className='index-box-title'>
-      <Typography variant='h1' color='whitesmoke'>
+      <h1>
         Початкова сторінка
-      </Typography>
-      <Typography variant='h1' color='whitesmoke'>
-        {token}
-      </Typography>
+      </h1>
     </Box>
   );
 }
