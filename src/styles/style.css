@@ -45,9 +45,9 @@ button {
   color: var(--text-color) !important;
 }
 
-.navigation-box {
-  background-color: transparent;
-  padding: 15px;
+nav {
+  display: flex;
+  padding: 1vh;
 }
 
 .index-box-title {
@@ -70,6 +70,13 @@ button {
   cursor: pointer;
 }
 
+.user-menu {
+  display: block;
+  position: absolute;
+  right: 0;
+  padding: 0;
+}
+
 .nav-user-menu {
   display: flex;
   border-radius: 5px;
@@ -77,41 +84,39 @@ button {
   align-items: center;
 }
 
-.nav-user-menu img {
+.user-menu img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  margin-left: 1rem;
+  margin-left: 10px;
+}
+
+.nav-user-menu-user-name {
+  display: flex;
+  color: var(--text-color);
+  font-size: 14pt;
 }
 
 .nav-user-menu-wrapper {
-  display: flex;
-  border-radius: 5px;
-  padding: 5px;
-  justify-content: flex-end;
-  align-items: center;
+  margin: 0;
+  background-color: #440144;
 }
 
-.nav-user-menu-button {
+.nav-user-menu-wrapper button {
   display: flex;
-  border-radius: 5px;
-  padding: 5px;
+  background-color: #830083;
   justify-content: flex-end;
   align-items: center;
-  color: var(--dark-text-color) !important;
+  color: var(--dark-text-color);
   font-size: 14pt;
+  padding: 5px;
   white-space: nowrap;
   overflow: hidden;
+  border: none;
 }
 
 .nav-user-menu:hover {
   cursor: pointer;
-}
-
-.nav-user-menu-user-name {
-  color: var(--text-color);
-  font-size: 14pt;
-  white-space: nowrap;
 }
 
 .numbers-container {

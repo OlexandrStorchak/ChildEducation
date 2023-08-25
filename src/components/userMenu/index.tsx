@@ -54,15 +54,13 @@ const UserMenu = () => {
                   }}
                 >
                   <div className='nav-user-menu-wrapper'>
-                    <button className='nav-user-menu-button' onClick={handleLogout}>Вийти</button>
+                    <button onClick={handleLogout}>Вийти</button>
                   </div>
                 </Popover>
               </>
             </>
           ) : (
-            <div className='nav-user-menu-button'>
-              <Button onClick={login}>Увійти</Button>
-            </div>
+            <Button onClick={login}>Увійти</Button>
           )}
         </>
       )}
