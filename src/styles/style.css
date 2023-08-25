@@ -3,7 +3,7 @@
 :root {
   --primary-color: #570057;
   --cards-bg-color: #95659548;
-  --text-color: #989898;
+  --text-color: #bebebe;
   --dark-text-color: black;
   --buttons-color: rgba(88, 71, 121, 0.436);
   --shadow-light-color: rgba(146, 84, 124, 0.527);
@@ -115,9 +115,7 @@ button {
 }
 
 .numbers-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .numbers-cards:hover {
@@ -125,12 +123,10 @@ button {
 }
 
 .numbers-buttons {
-  justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: grid;
-  grid-template-columns: var(--numbers-buttons-tcolumns);
-  gap: 2vw;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .numbers-buttons button {
@@ -149,14 +145,18 @@ button {
 }
 
 .numbers-cards {
-  display: grid;
-  grid-template-columns: 15vw 15vw 15vw;
-  width: 32%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .number-card {
+  width: 30dvw;
   background-color: var(--cards-bg-color);
-  margin: 3px;
+  margin: 5px;
+  margin-top: 5dvh;
   border-radius: 4px;
 }
 
@@ -174,38 +174,20 @@ button {
 
 .number-card-content-text {
   color: var(--text-color);
-  font-size: 5vw;
+  font-size: 10vh;
 }
 
-/* Small devices (up to 576px) */
 @media (max-width: 576px) {
-  :root {
-    --numbers-buttons-tcolumns: 35vw 35vw 35vw;
-    --numbers-cards-tcolumns: 25vw 25vw 25vw;
-  }
-
-  .numbers-cards {
-    width: 38%;
-  }
-  
 }
 
-/* Medium devices (between 577px and 768px) */
 @media (min-width: 577px) and (max-width: 768px) {
-  /* CSS styles for medium devices */
 }
 
-/* Large devices (between 769px and 992px) */
 @media (min-width: 769px) and (max-width: 992px) {
-  /* CSS styles for large devices */
 }
 
-/* Extra-large devices (between 993px and 1200px) */
 @media (min-width: 993px) and (max-width: 1200px) {
-  /* CSS styles for extra-large devices */
 }
 
-/* Extra-extra-large devices (above 1200px) */
 @media (min-width: 1201px) {
-  /* CSS styles for extra-extra-large devices */
 }
