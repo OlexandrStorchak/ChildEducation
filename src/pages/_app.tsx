@@ -6,7 +6,6 @@ import '../styles/style.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useEffect } from 'react';
 import Router from 'next/router';
-import { getMessaging, getToken, firebaseApp } from '../utils/firebase';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -16,21 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   const registerServiceWorker = () => {
-    const messaging = getMessaging(firebaseApp)
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').then(registration => {
-        Notification.requestPermission().then(permission => {
-          if (permission === 'granted') {
-            getToken(messaging, { serviceWorkerRegistration: registration }).then((token) => {
-              localStorage.setItem('fcm_token', token)
-              localStorage.setItem('device', navigator.userAgent)
-            })
-          } else {
-            console.log('Unable to get permission to notify.')
-          }
-        })
-
       }).catch(error => {
         console.log('Unable to register serviceworker, ', error)
       });
