@@ -115,6 +115,10 @@ nav {
   border: none;
 }
 
+.nav-user-menu-wrapper button:hover {
+  cursor: pointer;
+}
+
 .nav-user-menu:hover {
   cursor: pointer;
 }
