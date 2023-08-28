@@ -17,29 +17,31 @@ const Numbers = () => {
   }
   const { user } = useContext(AuthContext)
   const initScores = { success: [''], failed: [''] }
+  const [turns, setTurns] = useState(() => 0)
   const [findNumberDissabled, setFindNumberDissabled] = useState(() => false)
   const [numbers, setNumbers] = useState<number[]>(() => numbersArray)
-  const [selectedNumber, setSelectedNumber] = useState<number | null>(null)
+  const [selectedNumber, setSelectedNumber] = useState<number | null>(0)
   const [number, setNumber] = useState<number | null>(null)
   const [playSelectNumberGame, setPlaySelectNumberGame] =
     useState<boolean>(false)
   const [scores, setScores] = useState<Scores>(() => initScores)
 
   const resetHandling = () => {
-    setPlaySelectNumberGame(false);
+    setTurns(0)
+    setPlaySelectNumberGame(false)
     setFindNumberDissabled(false)
-    setNumbers(numbersArray);
+    setNumbers(numbersArray)
     setScores(() => initScores)
   };
 
   const onShuffleHandling = () => {
-    setNumbers(_.shuffle(numbers));
+    setNumbers(_.shuffle(numbers))
   };
 
   const startSelectNumberGame = () => {
     setFindNumberDissabled(true)
-    findNumberGame(setPlaySelectNumberGame, setNumber);
-    onShuffleHandling();
+    findNumberGame(setPlaySelectNumberGame, setNumber)
+    onShuffleHandling()
   };
 
   useEffect(() => {
@@ -47,21 +49,21 @@ const Numbers = () => {
       if (pickNumberGameCheck(number!, selectedNumber!)) {
         onWin();
         setScores({ ...scores, success: [...scores.success, ' 👍 '] })
-        setNumbers([number!]);
+        setNumbers([number!])
         setFindNumberDissabled(false)
         setTimeout(() => {
-          startSelectNumberGame();
+          startSelectNumberGame()
         }, 2500);
       } else {
         onTryAgain();
         setScores({ ...scores, failed: [...scores.failed, ' 👎 '] })
-        setNumbers([number!]);
+        setNumbers([number!])
         setTimeout(() => {
-          startSelectNumberGame();
+          startSelectNumberGame()
         }, 4100);
       }
     }
-  }, [selectedNumber]);
+  }, [selectedNumber,turns])
 
   return (
     <>
@@ -81,7 +83,7 @@ const Numbers = () => {
         <div className='numbers-cards'>
           {numbers.map((number) => {
             return (
-              <div key={number} className='number-card'>
+              <div key={number} className='number-card' onClick={() => setTurns((prev) => prev + 1)}>
                 <NumberItem
                   number={number}
                   setSelectedNumber={setSelectedNumber}
