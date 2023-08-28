@@ -17,7 +17,7 @@ const NumberItem = ({
   };
 
   return (
-    <div className='number-card-content' onClick={handleNumberClick}>
+    <div className='number-card-content' id={`number ${number.toString()}`} onClick={handleNumberClick}>
       <div className='number-card-content-text'>{number}</div>
     </div>
   );

@@ -1,23 +1,23 @@
 import _ from 'lodash';
 
-export const playNumber = (number: number) => {
+export const playNumber = (number: number, timeout?: boolean) => {
   const audio = new Audio(`/numbers/${number}ua.mp3`);
-  audio.play();
+  return timeout ? setTimeout(() => audio.play(), 2000) : audio.play()
 };
 
 const playFindNumber = () => {
   const audio = new Audio(`/numbers/findNumberUA.mp3`);
-  audio.play();
+  return audio.play();
 };
 
-export const findNumberGame = (
+export const findNumberGame = async (
   setPlaySelectNumberGame: (play: boolean) => void,
   setNumber: (number: number) => void
 ) => {
   setPlaySelectNumberGame(true);
   const number = _.random(1, 10);
-  playFindNumber();
-  setTimeout(() => playNumber(number), 1800);
+  await playFindNumber();
+  playNumber(number, true);
   setNumber(number);
 };
 

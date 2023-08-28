@@ -12,7 +12,8 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Numbers = () => {
   const { user } = useContext(AuthContext);
-  const [numbers, setNumbers] = useState<number[]>(numbersArray);
+  const [findNumberDissabled, setFindNumberDissabled] = useState(() => false)
+  const [numbers, setNumbers] = useState<number[]>(() => numbersArray);
   const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
   const [number, setNumber] = useState<number | null>(null);
   const [playSelectNumberGame, setPlaySelectNumberGame] =
@@ -20,6 +21,7 @@ const Numbers = () => {
 
   const resetHandling = () => {
     setPlaySelectNumberGame(false);
+    setFindNumberDissabled(false)
     setNumbers(numbersArray);
   };
 
@@ -28,32 +30,34 @@ const Numbers = () => {
   };
 
   const startSelectNumberGame = () => {
+    setFindNumberDissabled(true)
     findNumberGame(setPlaySelectNumberGame, setNumber);
+    onShuffleHandling();
   };
 
   useEffect(() => {
-    if (playSelectNumberGame)
+    if (playSelectNumberGame) {
       if (pickNumberGameCheck(number!, selectedNumber!)) {
         onWin();
         setNumbers([number!]);
+        setFindNumberDissabled(false)
         setTimeout(() => {
           startSelectNumberGame();
-          onShuffleHandling();
         }, 2500);
       } else {
         onTryAgain();
         setNumbers([number!]);
         setTimeout(() => {
-          onShuffleHandling();
           startSelectNumberGame();
         }, 4100);
       }
+    }
   }, [selectedNumber]);
 
   return (
     <>
       <div className='numbers-buttons'>
-        <button onClick={startSelectNumberGame}>Знайди цифру</button>
+        <button onClick={startSelectNumberGame} disabled={findNumberDissabled}>Знайди цифру</button>
         <button onClick={resetHandling}>Скинути</button>
         <button onClick={onShuffleHandling}>Перемішати</button>
       </div>
