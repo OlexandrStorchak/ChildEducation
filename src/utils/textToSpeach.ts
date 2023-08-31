@@ -2,7 +2,8 @@ export const textToSpeach = async (item: string) => {
   if ('speechSynthesis' in window) {
     const speech = new SpeechSynthesisUtterance(item)
     const voices = speechSynthesis.getVoices()
-    // speech.voice = voices[50]
+    const index = voices.findIndex((v) => v.lang !== 'en-US');
+    speech.voice = voices[index];
     speech.rate = 0.8;
     speechSynthesis.speak(speech)
   } else {
