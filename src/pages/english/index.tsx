@@ -6,35 +6,27 @@ export default function Home() {
 
   const [voices, setVoices] = useState<SpeechSynthesisVoice[] | null>(null);
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
-  
+
   useEffect(() => {
-    if (selectedVoice) {
-      window.localStorage.setItem('voice', selectedVoice.voiceURI)
-    }
     if ('speechSynthesis' in window) {
-      const availableVoices = window.speechSynthesis.getVoices();
-      const filteredVoices = availableVoices.filter(voice => voice.lang.includes('en'));
-      setVoices(filteredVoices);
-      setSelectedVoice(filteredVoices[0]);
+      const storedVoice = window.localStorage.getItem('voice')
+      const availableVoices = window.speechSynthesis.getVoices()
+      const filteredVoices = availableVoices.filter(voice => voice.lang.includes('en'))
+      const voiceIndex = availableVoices.findIndex((v) => v.voiceURI === storedVoice)
+      setVoices(filteredVoices)
+      setSelectedVoice(availableVoices[voiceIndex])
     } else {
       console.error('Speech synthesis is not supported in this browser.');
     }
   }, []);
 
-  const speakText = () => {
-    if (selectedVoice) {
-      const utterance = new SpeechSynthesisUtterance('This is a test.');
-      utterance.voice = selectedVoice;
-      window.speechSynthesis.speak(utterance);
-    } else {
-      console.error('No suitable voice found.');
-    }
-  };
+  useEffect(() => {
+    if (selectedVoice) { window.localStorage.setItem('voice', selectedVoice.voiceURI) }
+  }, [selectedVoice])
 
   return (
     <div className={styles['sweets-wrapper']}>
-      <div>
-        <p>Select a voice:</p>
+      <div className={styles.sweets}>
         <select onChange={(e) => setSelectedVoice(voices![parseInt(e.target.value)])}>
           {voices?.map((voice, index) => (
             <option key={index} value={index}>
@@ -42,47 +34,46 @@ export default function Home() {
             </option>
           ))}
         </select>
-        <button onClick={speakText}>Speak</button>
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(fruits).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{fruits[item]}</div>)}</>}
+        {<>{Object.keys(fruits).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{fruits[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(sweets).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{sweets[item]}</div>)}</>}
+        {<>{Object.keys(sweets).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{sweets[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(animals).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{animals[item]}</div>)}</>}
+        {<>{Object.keys(animals).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{animals[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(weather).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{weather[item]}</div>)}</>}
+        {<>{Object.keys(weather).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{weather[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(transportation).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{transportation[item]}</div>)}</>}
+        {<>{Object.keys(transportation).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{transportation[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(sports).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{sports[item]}</div>)}</>}
+        {<>{Object.keys(sports).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{sports[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(emotions).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{emotions[item]}</div>)}</>}
+        {<>{Object.keys(emotions).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{emotions[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(technology).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{technology[item]}</div>)}</>}
+        {<>{Object.keys(technology).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{technology[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(food).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{food[item]}</div>)}</>}
+        {<>{Object.keys(food).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{food[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(nature).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item),selectedVoice!)}>{nature[item]}</div>)}</>}
+        {<>{Object.keys(nature).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item), selectedVoice!)}>{nature[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
     </div>
