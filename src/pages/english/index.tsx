@@ -7,11 +7,11 @@ export default function Home() {
     <div className={styles['sweets-wrapper']}>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(sweets).map(item => <div className={styles.item} onClick={() => textToSpeach(String(item))}>{sweets[item]}</div>)}</>}
+        {<>{Object.keys(sweets).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item))}>{sweets[item]}</div>)}</>}
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>
-        {<>{Object.keys(fruits).map(item => <div className={styles.item} onClick={() => textToSpeach(String(item))}>{fruits[item]}</div>)}</>}
+        {<>{Object.keys(fruits).map(item => <div key={item} className={styles.item} onClick={() => textToSpeach(String(item))}>{fruits[item]}</div>)}</>}
       </div>
     </div>
   );
