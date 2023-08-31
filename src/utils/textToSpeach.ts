@@ -1,10 +1,9 @@
-
+import axios from "axios"
 export const textToSpeach = async (item: string) => {
   if ('speechSynthesis' in window) {
     const speech = new SpeechSynthesisUtterance(item)
     const voices = speechSynthesis.getVoices()
-    const voiceIndex = voices.findIndex((v) => v.voiceURI === 'Google UK English Female') //Google UK English Female
-    speech.voice = voices[voiceIndex]
+    speech.voice = voices[50]
     speech.rate = 0.8;
     speechSynthesis.speak(speech)
   } else {
