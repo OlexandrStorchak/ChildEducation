@@ -9,7 +9,7 @@ const Navigation = () => {
   const { user } = useContext(AuthContext);
 
   const onNavigationClick = (page:string) => {
-    router.push(`/${page}`, )
+    router.push(page)
   }
 
   return (
