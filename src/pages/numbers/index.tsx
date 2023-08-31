@@ -9,6 +9,7 @@ import {
   pickNumberGameCheck,
 } from '../../utils/numbers';
 import { AuthContext } from '../../context/AuthContext';
+import styles from '../../styles/Numbers.module.css'
 
 const Numbers = () => {
   interface Scores {
@@ -67,23 +68,23 @@ const Numbers = () => {
 
   return (
     <>
-      <div className='numbers-buttons'>
-        <button onClick={startSelectNumberGame} disabled={findNumberDissabled}>Знайди цифру</button>
-        <button onClick={resetHandling}>Скинути</button>
-        <button onClick={onShuffleHandling}>Перемішати</button>
+      <div className={styles.buttons}>
+        <button onClick={startSelectNumberGame} disabled={findNumberDissabled}>▶️</button>
+        <button onClick={resetHandling}>🔄</button>
+        <button onClick={onShuffleHandling}>🔀</button>
       </div>
-      <div className='numbers-scores-success' >
+      <div className={styles['scores-success']} >
         {scores.success}
       </div>
-      <div className='numbers-scores-failed'>
+      <div className={styles['scores-failed']}>
         {scores.failed}
       </div>
 
-      <div className='numbers-container'>
-        <div className='numbers-cards'>
+      <div className={styles.container}>
+        <div className={styles.cards}>
           {numbers.map((number) => {
             return (
-              <div key={number} className='number-card' onClick={() => setTurns((prev) => prev + 1)}>
+              <div key={number} className={styles.card} onClick={() => setTurns((prev) => prev + 1)}>
                 <NumberItem
                   number={number}
                   setSelectedNumber={setSelectedNumber}

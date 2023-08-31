@@ -1,6 +1,7 @@
-import { Button, CircularProgress, Paper, Popover } from '@mui/material';
+import { CircularProgress, Popover } from '@mui/material';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import styles from '../../styles/Nav.module.css'
 
 const UserMenu = () => {
   const { login, logout, user, profile, showSpiner } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const UserMenu = () => {
   return (
     <>
       {showSpiner ? (
-        <div className='nav-user-menu'>
+        <div className={styles.menu}>
           <CircularProgress className='nav-user-menu-user-name' />
         </div>
       ) : (
@@ -32,11 +33,11 @@ const UserMenu = () => {
             <>
               {profile && (
                 <div
-                  className='nav-user-menu'
+                  className={styles.menu}
                   ref={anchorEl}
                   onClick={handleOpen}
                 >
-                  <span className='nav-user-menu-user-name'>
+                  <span>
                     {profile.name}
                   </span>
                   <img src={profile.picture} alt='user image' />
@@ -53,14 +54,14 @@ const UserMenu = () => {
                     horizontal: 'right',
                   }}
                 >
-                  <div className='nav-user-menu-wrapper'>
+                  <div className={styles['menu-wrapper']}>
                     <button onClick={handleLogout}>Вийти</button>
                   </div>
                 </Popover>
               </>
             </>
           ) : (
-            <Button onClick={login}>Увійти</Button>
+            <button onClick={login}>👤</button>
           )}
         </>
       )}

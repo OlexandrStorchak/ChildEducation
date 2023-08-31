@@ -1,4 +1,5 @@
 import { playNumber } from '../../../utils/numbers';
+import styles from '../../../styles/Numbers.module.css'
 
 interface INumberItem {
   number: number;
@@ -17,8 +18,8 @@ const NumberItem = ({
   };
 
   return (
-    <div className='number-card-content' id={`number ${number.toString()}`} onClick={handleNumberClick}>
-      <div className='number-card-content-text'>{number}</div>
+    <div className={styles['card-content']} id={`number ${number.toString()}`} onClick={handleNumberClick}>
+      <div className={styles['card-content-text']}>{number}</div>
     </div>
   );
 };
