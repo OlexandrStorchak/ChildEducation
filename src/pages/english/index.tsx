@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { animals, emotions, food, fruits, nature, sports, sweets, technology, transportation, weather } from '../../constants/english';
+import { animals, emotions, food, fruits, nature, sports, sweets, technology, transportation, weather } from '../../constants';
 import styles from '../../styles/English.module.css'
 import VoiceSelect from '../../components/english/VoiceSelect';
 import Items from '../../components/english/Items';
 
 const English = () => {
-
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
 
   return (
