@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className={styles['sweets-wrapper']}>
       <div className={styles.sweets}>
-        {!speechSynthesis ? <>
+        {speechSynthesis ? <>
           <select onChange={(e) => {
             setSelectedVoice(voices![parseInt(e.target.value)])
             setSelectedVoiceIndex(parseInt(e.target.value))
