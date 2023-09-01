@@ -1,15 +1,8 @@
-.sweets-wrapper {
+.items {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.sweets {
-  display: flex;
-  width: max-content;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .item {
@@ -25,19 +18,8 @@
   height: 10px;
 }
 
-.sweets .item:hover {
+.item:hover {
   transform: scale(2.5);
   cursor: pointer;
   z-index: 10;
-}
-
-.separator {
-  height: 10dvh;
-  width: 100%;
-}
-
-.sweets select {
-  all: unset;
-  text-align: center;
-  font-size: 50px;
 }

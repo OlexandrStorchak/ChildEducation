@@ -1,4 +1,4 @@
-interface EnglishEntries { [key: string]: string }
+export interface EnglishEntries { [key: string]: string }
 
 export const sweets: EnglishEntries = {
   cake: '🧁',
