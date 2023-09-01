@@ -39,7 +39,7 @@ export default function Home() {
           value={selectedVoiceIndex!}>
           {voices?.map((voice, index) => (
             <option key={index} value={index}>
-              {voice.name}
+              🗣️ {voice.name}
             </option>
           ))}
         </select>
