@@ -6,6 +6,7 @@ export default function Home() {
 
   const [voices, setVoices] = useState<SpeechSynthesisVoice[] | null>(null);
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const [selectedVoiceIndex, setSelectedVoiceIndex] = useState<number | null>(0);
 
   useEffect(() => {
     if ('speechSynthesis' in window) {
@@ -13,6 +14,7 @@ export default function Home() {
       const availableVoices = window.speechSynthesis.getVoices()
       const filteredVoices = availableVoices.filter(voice => voice.lang.includes('en'))
       const voiceIndex = availableVoices.findIndex((v) => v.voiceURI === storedVoice)
+      setSelectedVoiceIndex(parseInt(window.localStorage.getItem('voiceIndex')!))
       setVoices(filteredVoices)
       setSelectedVoice(availableVoices[voiceIndex])
     } else {
@@ -21,13 +23,20 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (selectedVoice) { window.localStorage.setItem('voice', selectedVoice.voiceURI) }
+    if (selectedVoice) {
+      window.localStorage.setItem('voice', selectedVoice.voiceURI)
+    }
   }, [selectedVoice])
 
   return (
     <div className={styles['sweets-wrapper']}>
       <div className={styles.sweets}>
-        <select onChange={(e) => setSelectedVoice(voices![parseInt(e.target.value)])}>
+        <select onChange={(e) => {
+          setSelectedVoice(voices![parseInt(e.target.value)])
+          setSelectedVoiceIndex(parseInt(e.target.value))
+          window.localStorage.setItem('voiceIndex', e.target.value)
+        }}
+          value={selectedVoiceIndex!}>
           {voices?.map((voice, index) => (
             <option key={index} value={index}>
               {voice.name}

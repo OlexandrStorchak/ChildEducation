@@ -38,5 +38,6 @@
 
 .sweets select {
   all: unset;
+  text-align: center;
   font-size: 50px;
 }
