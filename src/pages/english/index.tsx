@@ -10,6 +10,7 @@ export default function Home() {
   const [speechSynthesis, setSpeechSynthesis] = useState<boolean>(false);
 
   useEffect(() => {
+    window.localStorage.setItem('voice', 'Alex')
     if ('speechSynthesis' in window) {
       const storedVoice = window.localStorage.getItem('voice')
       if (storedVoice) { setSpeechSynthesis(true) }
