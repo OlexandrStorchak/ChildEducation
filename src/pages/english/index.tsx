@@ -12,7 +12,7 @@ export default function Home() {
     if ('speechSynthesis' in window) {
       const storedVoice = window.localStorage.getItem('voice')
       const availableVoices = window.speechSynthesis.getVoices()
-      const filteredVoices = availableVoices.filter(voice => voice.lang.includes('en'))
+      const filteredVoices = availableVoices.filter(voice => voice.lang.includes('en-US'))
       const voiceIndex = availableVoices.findIndex((v) => v.voiceURI === storedVoice)
       setSelectedVoiceIndex(parseInt(window.localStorage.getItem('voiceIndex')!))
       setVoices(filteredVoices)
