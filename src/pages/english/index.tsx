@@ -10,7 +10,6 @@ export default function Home() {
   const [speechSynthesis, setSpeechSynthesis] = useState<boolean>(false);
 
   useEffect(() => {
-    window.localStorage.setItem('voice', 'Alex')
     if ('speechSynthesis' in window) {
       const storedVoice = window.localStorage.getItem('voice')
       if (storedVoice) { setSpeechSynthesis(true) }
@@ -41,7 +40,7 @@ export default function Home() {
             window.localStorage.setItem('voiceIndex', e.target.value)
           }}
             value={selectedVoiceIndex!}>
-            {voices?.map((voice, index) => (
+            {voices!.map((voice, index) => (
               <option key={index} value={index}>
                 🗣️ {voice.name}
               </option>
