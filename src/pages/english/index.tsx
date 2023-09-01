@@ -7,10 +7,12 @@ export default function Home() {
   const [voices, setVoices] = useState<SpeechSynthesisVoice[] | null>(null);
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [selectedVoiceIndex, setSelectedVoiceIndex] = useState<number | null>(0);
+  const [speechSynthesis, setSpeechSynthesis] = useState<boolean>(false);
 
   useEffect(() => {
     if ('speechSynthesis' in window) {
       const storedVoice = window.localStorage.getItem('voice')
+      if (storedVoice) { setSpeechSynthesis(true) }
       const availableVoices = window.speechSynthesis.getVoices()
       const filteredVoices = availableVoices.filter(voice => voice.lang.includes('en-US'))
       const voiceIndex = availableVoices.findIndex((v) => v.voiceURI === storedVoice)
@@ -31,18 +33,23 @@ export default function Home() {
   return (
     <div className={styles['sweets-wrapper']}>
       <div className={styles.sweets}>
-        <select onChange={(e) => {
-          setSelectedVoice(voices![parseInt(e.target.value)])
-          setSelectedVoiceIndex(parseInt(e.target.value))
-          window.localStorage.setItem('voiceIndex', e.target.value)
-        }}
-          value={selectedVoiceIndex!}>
-          {voices?.map((voice, index) => (
-            <option key={index} value={index}>
-              🗣️ {voice.name}
-            </option>
-          ))}
-        </select>
+        {!speechSynthesis ? <>
+          <select onChange={(e) => {
+            setSelectedVoice(voices![parseInt(e.target.value)])
+            setSelectedVoiceIndex(parseInt(e.target.value))
+            window.localStorage.setItem('voiceIndex', e.target.value)
+          }}
+            value={selectedVoiceIndex!}>
+            {voices?.map((voice, index) => (
+              <option key={index} value={index}>
+                🗣️ {voice.name}
+              </option>
+            ))}
+          </select>
+        </> : <>
+          <h2>Немає можливості проговорити слова в голос</h2>
+        </>
+        }
       </div>
       <div className={styles.separator}></div>
       <div className={styles.sweets}>

@@ -41,6 +41,10 @@ h1 {
   font-size: 7vw;
 }
 
+h2 {
+  font-size: 4vw;
+}
+
 button {
   color: var(--text-color) !important;
 }
